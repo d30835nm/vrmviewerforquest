@@ -39,3 +39,6 @@ Assets/Oculus/
 Assets/VRM/
 Assets/Oculus.meta
 Assets/VRM.meta
+.idea/
+Assets/Plugins/Editor/
+Assets/Plugins/Editor.meta

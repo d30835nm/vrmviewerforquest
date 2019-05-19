@@ -35,3 +35,7 @@ sysinfo.txt
 *.apk
 *.unitypackage
 Logs/
+Assets/Oculus/
+Assets/VRM/
+Assets/Oculus.meta
+Assets/VRM.meta

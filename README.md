@@ -12,6 +12,11 @@ Oculus Quest(及びGo)向けのVRMビューワーサンプルです。
 ・選択したVRMの表示
 　VRMの表示を行います。負荷の関係上、表示は1人、VRMの裏待機（キャッシュ）数は3人としています。ポーズ変更や表情変更機能はまだついていません。
 
+# 実行ファイル(.apk)
+[VrmViewerForOculusGo_v0_1_0.apk](https://drive.google.com/file/d/1yEGjO7CK7rAQLlg7wjeF9Bg9_lhtbxM-/view?usp=sharing)
+
+Oculus Quest用はまだありません。
+
 # 動作環境
 Unity 2018.4.0f1 にて確認
 

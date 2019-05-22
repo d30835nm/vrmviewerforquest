@@ -27,5 +27,10 @@ namespace VrmViewer
                 child.gameObject.SetActive(visible);
             }
         }
+
+        public void OpenVRoidHub()
+        {
+            Application.OpenURL("https://hub.vroid.com/models?is_downloadable=1&characterization_allowed_user=everyone");
+        }
     }
 }

@@ -40,9 +40,22 @@ namespace VrmViewer
             }
             
             File.Copy(vrmFileFullName,GlobalPath.VrmHomePath + "/" + Path.GetFileName(vrmFileFullName));
+            
+            var mainCamera = Camera.main;
+            var defaultCullingMask = mainCamera.cullingMask;
+            mainCamera.cullingMask = 1 << LayerMask.NameToLayer("Loading");
+            StartCoroutine(Loading(mainCamera, defaultCullingMask, vrmFileFullName));
+        }
+
+        IEnumerator Loading(Camera mainCamera,int defaultCullingMask, string vrmFileFullName)
+        {
+            //Loading表示に切り替えるために1フレーム待つ
+            yield return null;
+            
             var vrmMeta = VrmMeta.Generate(vrmFileFullName);
             vrmMeta.Save();
             Load(vrmMeta);
+            mainCamera.cullingMask = defaultCullingMask; 
         }
 
         void LoadAll()

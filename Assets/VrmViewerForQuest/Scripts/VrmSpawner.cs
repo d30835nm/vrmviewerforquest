@@ -53,6 +53,17 @@ namespace VrmViewer
             {
                 poolingVrmImporterContext.Value.Root.SetActive(false);
             }
+
+            var mainCamera = Camera.main;
+            var defaultCullingMask = mainCamera.cullingMask;
+            mainCamera.cullingMask = 1 << LayerMask.NameToLayer("Loading");
+            StartCoroutine(Loading(mainCamera, defaultCullingMask, vrmMeta));
+        }
+
+        IEnumerator Loading(Camera mainCamera, int defaultCullingMask, VrmMeta vrmMeta)
+        {
+            //Loading表示に切り替えるために1フレーム待つ
+            yield return null;
             
             var bytes = File.ReadAllBytes(GlobalPath.VrmHomePath + "/" + vrmMeta.VrmFileName);
             var vrmImporterContext = new VRMImporterContext();
@@ -62,8 +73,8 @@ namespace VrmViewer
             vrmImporterContext.Root.transform.SetParent(vrmRoot, false);
             vrmImporterContext.EnableUpdateWhenOffscreen();
             vrmImporterContext.ShowMeshes();
-
             poolingVrmImporterContexts.Add(new KeyValuePair<string, VRMImporterContext>(vrmMeta.VrmFileName, vrmImporterContext));
+            mainCamera.cullingMask = defaultCullingMask;
         }
     }
 }

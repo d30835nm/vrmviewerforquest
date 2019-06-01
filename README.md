@@ -44,3 +44,5 @@ https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022
 
 # ライセンスについて
 MITライセンスにてご利用ください。
+アニメーションおよびボイスについては、ユニティちゃんライセンス条項の元に提供されています。
+© Unity Technologies Japan/UCL

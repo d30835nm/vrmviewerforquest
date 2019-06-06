@@ -13,6 +13,15 @@ namespace VrmViewer
         [SerializeField]
         Transform vrmRoot;
 
+        [SerializeField]
+        AnimationClip defaultAnimation;
+
+        [SerializeField]
+        BlendShapePreset defaultBlendShapePreset;
+
+        [SerializeField]
+        float defaultBlendShapeValue;
+
         readonly List<KeyValuePair<string, VRMImporterContext>> poolingVrmImporterContexts = new List<KeyValuePair<string, VRMImporterContext>>();
 
         //VRMの最大同時読み込み数
@@ -21,6 +30,7 @@ namespace VrmViewer
         void Awake()
         {
             Assert.IsNotNull(vrmRoot);
+            Assert.IsNotNull(defaultAnimation);
         }
 
         public void SelectVrm(VrmMeta vrmMeta)
@@ -64,13 +74,21 @@ namespace VrmViewer
         {
             //Loading表示に切り替えるために1フレーム待つ
             yield return null;
-            
+
             var bytes = File.ReadAllBytes(GlobalPath.VrmHomePath + "/" + vrmMeta.VrmFileName);
             var vrmImporterContext = new VRMImporterContext();
 
             vrmImporterContext.ParseGlb(bytes);
             vrmImporterContext.Load();
             vrmImporterContext.Root.transform.SetParent(vrmRoot, false);
+            var vrmAnimationController = vrmImporterContext.Root.AddComponent<VrmAnimationController>();
+            vrmAnimationController.Play(defaultAnimation);
+
+            //BlendShapeProxyの初期化を待つ。
+            yield return null;
+            
+            var vrmBlendShapeProxy = vrmImporterContext.Root.GetComponent<VRMBlendShapeProxy>();
+            vrmBlendShapeProxy.ImmediatelySetValue(defaultBlendShapePreset, defaultBlendShapeValue);
             vrmImporterContext.EnableUpdateWhenOffscreen();
             vrmImporterContext.ShowMeshes();
             poolingVrmImporterContexts.Add(new KeyValuePair<string, VRMImporterContext>(vrmMeta.VrmFileName, vrmImporterContext));

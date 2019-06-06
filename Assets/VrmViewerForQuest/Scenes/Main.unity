@@ -2002,6 +2002,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vrmRoot: {fileID: 1467937317}
+  defaultAnimation: {fileID: 7400000, guid: e54e2e1fa0a994b389fe0654511fac47, type: 3}
+  defaultBlendShapePreset: 11
+  defaultBlendShapeValue: 1
 --- !u!4 &1467937317
 Transform:
   m_ObjectHideFlags: 0

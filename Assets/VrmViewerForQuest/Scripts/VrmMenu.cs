@@ -8,8 +8,7 @@ namespace VrmViewer
 
         void Update()
         {
-            //Questの場合はStartボタン、Goの場合はBackボタンをメニューボタンとする
-            if (OVRInput.GetDown(OVRInput.Button.Start) || OVRInput.GetDown(OVRInput.Button.Back))
+            if (OVRInput.GetDown(OVRInput.Button.Start))
             {
                 visible = !visible;
                 ChangeVisibility(visible);

@@ -118,7 +118,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.1.0
+  bundleVersion: 0.2.0
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -155,7 +155,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: jp.bnut.vrmviewerforquest
   buildNumber: {}
-  AndroidBundleVersionCode: 1
+  AndroidBundleVersionCode: 2
   AndroidMinSdkVersion: 23
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 0
@@ -392,8 +392,8 @@ PlayerSettings:
     m_Devices:
     - Oculus
   m_BuildTargetEnableVuforiaSettings: []
-  openGLRequireES31: 0
-  openGLRequireES31AEP: 0
+  openGLRequireES31: 1
+  openGLRequireES31AEP: 1
   m_TemplateCustomTags: {}
   mobileMTRendering:
     Android: 1
